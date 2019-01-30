@@ -11,8 +11,11 @@
             Save
           </button>
 
-          <button type="button" class="btn btn-danger">
-            Clear
+          <button
+              type="button"
+              class="btn btn-danger"
+              (click)="onCancel()">
+            Cancel
           </button>
         </div>
 
@@ -37,14 +40,15 @@
                     type="text"
                     id="imagePath"
                     class="form-control"
-                    formControlName="imagePath">
+                    formControlName="imagePath"
+                    #imagePath>
             </div>
           </div>
         </div>
 
-        <div class="row">
+        <div *ngIf="editMode" class="row">
           <div class="col-xs-12">
-            <img src="" class="img-responsive">
+            <img [src]="imagePath.value" class="img-responsive">
           </div>
         </div>
 
@@ -86,7 +90,10 @@
               </div>
 
               <div class="col-xs-2">
-                <button class="btn btn-danger">X</button>
+                <button 
+                    class="btn btn-danger"
+                    type="button"
+                    (click)="onDeleteIngredient(i)">X</button>
               </div>
 
             </div>
