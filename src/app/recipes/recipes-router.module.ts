@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 
 const recipeRoutes = [
   {
-    path: 'recipes',
+    path: '',
     component: RecipesComponent,
     children: [
       { path: '', component: RecipeStartComponent },

@@ -1,8 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Response } from '@angular/http';
-import { FirebaseService } from '../shared/firebase.service';
-import { RecipeService } from '../recipes/recipe.service';
-import { AuthService } from '../auth/auth.service';
+import { FirebaseService } from '../../shared/firebase.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-header',
