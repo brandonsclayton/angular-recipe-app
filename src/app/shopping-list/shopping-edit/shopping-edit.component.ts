@@ -38,19 +38,32 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       });
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   onAdd() {
     const name = this.shoppingForm.value['name'];
     const amount = this.shoppingForm.value['amount'];
+    const ingredient = new Ingredient(name, amount);
 
-    this.shoppingListService.addIngredient(new Ingredient(name, amount));
+    if (this.editMode) {
+      this.shoppingListService.updateIngredient(this.editedItemIndex, ingredient);
+    } else {
+      this.shoppingListService.addIngredient(ingredient);
+    }
+
+    this.onClear();    
   }
 
   onClear() {
     this.shoppingForm.reset();
+    this.editMode = false;
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  onDelete() {
+    this.shoppingListService.deleteIngredient(this.editedItemIndex);
+    this.onClear();
   }
 
 }
