@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { RecipeService } from '../recipes/recipe.service';
 import { Recipe } from '../recipes/recipe.model';
 import { AuthService } from '../auth/auth.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 
 @Injectable({providedIn: 'root'})
@@ -15,24 +16,19 @@ export class FirebaseService {
 
   constructor(
       private recipeService: RecipeService,
-      private http: Http,
+      private httpClient: HttpClient,
       private authService: AuthService) {}
 
   saveRecipes() {
-    const token = this.authService.getToken();
-
-    return this.http.put(
-        `${this.recipeUrl}?auth=${token}`,
+    return this.httpClient.put(
+        this.recipeUrl,
         this.recipeService.getRecipes());
   }
 
   fetchRecipes() {
-    const token = this.authService.getToken();
-
-    this.http.get(`${this.recipeUrl}?auth=${token}`)
-      .pipe(map(res => {
-        const recipes: Recipe[] = res.json();
-
+    this.httpClient.get<Recipe[]>(
+      this.recipeUrl)
+      .pipe(map(recipes => {
         recipes.forEach((recipe) => {
           if (!recipe['ingredients']) {
             console.log(recipe);
