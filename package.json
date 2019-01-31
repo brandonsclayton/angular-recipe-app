@@ -9,11 +9,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "postinstall": "ng build --prod",
-  "engines": {
-    "node": "8.10.0",
-    "npm": "3.5.2"
-  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~7.2.0",
@@ -31,7 +26,6 @@
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26",
-    "typescript": "~3.2.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.12.0",
