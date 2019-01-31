@@ -20,18 +20,18 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right ">
-        <ng-template [ngIf]="!authService.isAuth()">
+        <ng-template [ngIf]="!isAuth()">
           <li><a routerLink="/signup">Register</a></li>
           <li><a routerLink="/signin">Login</a></li>
         </ng-template>
 
         <li><a 
             (click)="onLogout()"
-            *ngIf="authService.isAuth()">Logout</a></li>
+            *ngIf="isAuth()">Logout</a></li>
         <li 
             appDropdown 
             class="dropdown"
-            *ngIf="authService.isAuth()">
+            *ngIf="isAuth()">
           <a class="dropdown-toggle" role="botton">
             Manage <span class="caret"></span>
           </a>

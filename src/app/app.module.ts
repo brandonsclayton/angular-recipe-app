@@ -20,8 +20,8 @@ import { CoreModule } from './core/core.module';
     SharedModule,
     ShoppingListModule,
     HttpModule,
-    CoreModule,
     AuthModule,
+    CoreModule,
     AppRoutingModule
   ],
   providers: [],
